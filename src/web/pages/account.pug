@@ -1,0 +1,33 @@
+include _head.pug
+
+include _header.pug
+
+main
+  form(method="post", action="/account/signin")
+    fieldgroup
+      label(for="username") Username
+      input(type="username", name="username", id="emausernameil")
+
+    fieldgroup
+      label(for="password") Password
+      input(type="password", name="password", id="password")
+
+    button(type="submit") Sign into account
+
+
+  form(method="post", action="/account")
+    fieldgroup
+      label(for="email") Email
+      input(type="email", name="email", id="email")
+
+    fieldgroup
+      label(for="username") Username
+      input(type="text", name="username", id="username")
+
+    fieldgroup
+      label(for="password") Password
+      input(type="password", name="password", id="password")
+
+    button(type="submit") Create account
+
+include _foot.pug

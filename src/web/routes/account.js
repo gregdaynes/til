@@ -37,12 +37,16 @@ const schemaAuth = {
 }
 
 module.exports = async (app) => {
+  app.get('/account', async (req, reply) => {
+    return reply.send({
+      view: 'account.pug',
+    })
+  })
+
   app.post('/account', { schema: schemaAccount }, async (req, reply) => {
     await create(req.body)
 
-    reply.send({
-      message: 'Account created',
-    })
+    reply.redirect('/account')
   })
 
   app.post('/account/signin', {
@@ -62,6 +66,7 @@ module.exports = async (app) => {
           path: '/',
         })
         .send({
+          view: 'account.pug',
           message: 'signed in',
         })
     } catch (err) {

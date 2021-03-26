@@ -4,7 +4,7 @@ const faker = require('faker')
 const { test } = require('tap')
 
 test('route /account', async (t) => {
-  t.plan(3)
+  t.plan(4)
 
   await database.migrate.latest()
   const app = await build()
@@ -43,9 +43,22 @@ test('route /account', async (t) => {
       })
 
       t.match(response, {
+        statusCode: 302,
+      })
+    })
+  })
+
+  await t.test('GET /', async (t) => {
+    await t.test('valid request', async (t) => {
+      const response = await app.inject({
+        method: 'get',
+        url: '/account',
+      })
+
+      t.match(response, {
         statusCode: 200,
         body: JSON.stringify({
-          message: 'Account created',
+          view: 'account.pug',
         }),
       })
     })
