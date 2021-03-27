@@ -6,7 +6,6 @@
     "test:coverage": "npm run test -- --coverage-report=html",
     "db": "export $(cat .env | xargs) && export $(cat .env.local | xargs) && npx knex --knexfile knexfile.js",
     "lint": "npx eslint src",
-    "file": "export $(cat .env | xargs) && export $(cat .env.local | xargs) && node --use_strict",
     "release": "standard-version"
   },
   "engines": {
