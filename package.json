@@ -1,10 +1,9 @@
 {
   "main": "src/web/index.js",
   "scripts": {
-    "test": "export $(cat .env | xargs) && export $(cat .env.test | xargs) && export $(cat .env.test.local | xargs) && tap --no-coverage-report --strict",
-    "start": "export $(cat .env | xargs) && export $(cat .env.local | xargs) && nodemon --use_strict --inspect --ignore './test' ./src/web/index.js | pino-pretty",
-    "test:coverage": "npm run test -- --coverage-report=html",
-    "db": "export $(cat .env | xargs) && export $(cat .env.local | xargs) && npx knex --knexfile knexfile.js",
+    "start": "NODE_PATH=src node-dev --use_strict --inspect -r ./loadEnv.js ./src/web/index.js | pino-pretty",
+    "test": "NODE_PATH=src node -r ./loadEnv.js node_modules/.bin/tap --strict",
+    "db": "node -r ./loadEnv.js node_modules/.bin/knex --knexfile knexfile.js",
     "lint": "npx eslint src",
     "release": "standard-version"
   },
@@ -40,7 +39,7 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-sort-requires": "^2.1.0",
     "faker": "^5.4.0",
-    "nodemon": "^2.0.7",
+    "node-dev": "^6.6.0",
     "pino-pretty": "^4.7.1",
     "standard-version": "^9.1.1",
     "tap": "^14.11.0"
