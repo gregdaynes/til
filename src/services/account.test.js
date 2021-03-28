@@ -1,4 +1,4 @@
-const { test } = require('lib/test')
+const { test } = require('test')
 
 const database = require('@database')
 const faker = require('faker')

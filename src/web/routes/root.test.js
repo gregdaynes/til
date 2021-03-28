@@ -1,4 +1,4 @@
-const { test } = require('lib/test')
+const { test } = require('test')
 
 const build = require('@web/app')
 

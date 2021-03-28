@@ -1,5 +1,8 @@
 {
   "main": "src/web/index.js",
+  "workspaces": [
+    "./test"
+  ],
   "scripts": {
     "start": "node-dev --use_strict -r ./loadEnv ./src/web/index.js | pino-pretty",
     "test": "node -r ./loadEnv node_modules/.bin/tap --strict",
@@ -43,7 +46,6 @@
     "node-dev": "^6.6.0",
     "pino-pretty": "^4.7.1",
     "standard-version": "^9.1.1",
-    "tap": "^14.11.0",
     "yorkie": "^2.0.0"
   },
   "eslintConfig": {
