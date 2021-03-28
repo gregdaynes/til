@@ -42,7 +42,8 @@
     "node-dev": "^6.6.0",
     "pino-pretty": "^4.7.1",
     "standard-version": "^9.1.1",
-    "tap": "^14.11.0"
+    "tap": "^14.11.0",
+    "yorkie": "^2.0.0"
   },
   "eslintConfig": {
     "env": {
@@ -92,5 +93,9 @@
     "before": "test/before.js",
     "reporter": "list",
     "esm": false
+  },
+  "gitHooks": {
+    "pre-push": "npm run lint && npm run test",
+    "post-commit": "npm run lint"
   }
 }
