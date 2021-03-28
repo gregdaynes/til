@@ -1,5 +1,6 @@
-const build = require('web/app')
-const { test } = require('tap')
+const { test } = require('lib/test')
+
+const build = require('@web/app')
 
 test('route /', async (t) => {
   t.plan(1)

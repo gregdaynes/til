@@ -1,4 +1,4 @@
-const build = require('web/app')
+const build = require('./app')
 
 const config = {
   logger: true,

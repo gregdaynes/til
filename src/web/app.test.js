@@ -1,11 +1,12 @@
-const build = require('web/app')
-const { test } = require('tap')
+const { test } = require('lib/test')
+
+const build = require('./app')
 
 test('boots the app', async (t) => {
   t.plan(1)
 
-  const app = await build()
   t.tearDown(() => app.close())
+  const app = await build()
 
   await app.addHook('onReady', async () => {
     t.ok(true)

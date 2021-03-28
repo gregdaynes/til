@@ -1,4 +1,4 @@
-const { Model } = require('lib/database')
+const { Model } = require('@database')
 const { randomUUID } = require('crypto')
 
 class Account extends Model {

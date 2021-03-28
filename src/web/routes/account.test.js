@@ -1,7 +1,8 @@
-const build = require('web/app')
-const database = require('lib/database')
+const { test } = require('lib/test')
+
+const build = require('@web/app')
+const database = require('@database')
 const faker = require('faker')
-const { test } = require('tap')
 
 test('route /account', async (t) => {
   t.plan(4)

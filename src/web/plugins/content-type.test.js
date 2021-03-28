@@ -1,6 +1,7 @@
-const build = require('web/app')
+const { test } = require('lib/test')
+
+const build = require('@web/app')
 const contentType = require('./content-type')
-const { test } = require('tap')
 
 test('ContentType Response', async (t) => {
   t.plan(3)

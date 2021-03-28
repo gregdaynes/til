@@ -1,6 +1,7 @@
-require('lib/database')
+require('module-alias/register')
+
 const autoLoad = require('fastify-autoload')
-const database = require('lib/database')
+const database = require('@database')
 const fastify = require('fastify')
 const path = require('path')
 

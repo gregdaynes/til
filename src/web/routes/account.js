@@ -1,4 +1,4 @@
-const { create, fetch, verifyPassword } = require('services/account')
+const { create, fetch, verifyPassword } = require('@service/account')
 
 const schemaResponse = {
   response: {

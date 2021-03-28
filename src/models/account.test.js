@@ -1,7 +1,8 @@
-const Account = require('models/account')
-const database = require('lib/database')
+const { test } = require('lib/test')
+
+const Account = require('@model/account')
+const database = require('@database')
 const faker = require('faker')
-const { test } = require('tap')
 
 const uuidRegex = /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/
 

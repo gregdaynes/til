@@ -1,4 +1,4 @@
-const { hash, verify } = require('lib/hash')
+const { hash, verify } = require('./hash')
 const { test } = require('tap')
 
 test('creates hash of a payload', async (t) => {
