@@ -4,9 +4,9 @@
     "./test"
   ],
   "scripts": {
-    "start": "node-dev --use_strict -r ./loadEnv ./src/web/index.js | pino-pretty",
-    "test": "node -r ./loadEnv node_modules/.bin/tap --strict",
-    "db": "node -r ./loadEnv node_modules/.bin/knex --knexfile knexfile.js",
+    "start": "node-dev --use_strict -r ./bin/loadEnv ./bin/server.js | pino-pretty",
+    "test": "node -r ./bin/loadEnv node_modules/.bin/tap --strict",
+    "db": "node -r ./bin/loadEnv node_modules/.bin/knex --knexfile knexfile.js",
     "lint": "npx eslint src",
     "release": "standard-version"
   },
@@ -102,12 +102,14 @@
     "post-commit": "npm run lint"
   },
   "_moduleAliases": {
-    "@root"      : "./src",
-    "@database" : "./src/lib/database",
+    "@root": "./src",
+    "@database": "./src/lib/database",
     "@lib": "./src/lib",
     "@web": "./src/web",
     "@model": "./src/models",
     "@service": "./src/services"
   },
-  "_moduleDirectories": ["./src"]
+  "_moduleDirectories": [
+    "./src"
+  ]
 }

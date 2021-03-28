@@ -1,6 +1,6 @@
-const { test } = require('lib/test')
+const { test } = require('test')
 
-const build = require('./app')
+const build = require('./index')
 
 test('boots the app', async (t) => {
   t.plan(1)

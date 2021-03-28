@@ -1,6 +1,6 @@
 const { test } = require('test')
 
-const build = require('@web/app')
+const build = require('@web')
 
 test('route /', async (t) => {
   t.plan(1)

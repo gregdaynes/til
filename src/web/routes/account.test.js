@@ -1,6 +1,6 @@
 const { test } = require('test')
 
-const build = require('@web/app')
+const build = require('@web')
 const database = require('@database')
 const faker = require('faker')
 

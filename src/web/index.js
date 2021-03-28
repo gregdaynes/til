@@ -1,19 +1,26 @@
-const build = require('./app')
+const autoLoad = require('fastify-autoload')
+const database = require('@database')
+const fastify = require('fastify')
+const path = require('path')
 
-const config = {
-  logger: true,
+const { PLUGIN_DIR, ROUTES_DIR } = process.env
+
+module.exports = async (opts) => {
+  const app = fastify(opts)
+
+  app.addHook('onClose', async () => {
+    await database.destroy()
+  })
+
+  app.register(autoLoad, {
+    dir: path.join(__dirname, PLUGIN_DIR),
+    ignorePattern: /.*(test|spec).js/,
+  })
+
+  app.register(autoLoad, {
+    dir: path.join(__dirname, ROUTES_DIR),
+    ignorePattern: /.*(test|spec).js/,
+  })
+
+  return app
 }
-
-const { PORT, LISTEN } = process.env
-
-async function start () {
-  try {
-    const app = await build(config)
-    app.listen(PORT, LISTEN)
-  } catch (err) {
-    console.error(err)
-    process.exit(1)
-  }
-}
-
-start()
