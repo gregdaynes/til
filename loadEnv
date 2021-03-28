@@ -1,0 +1,48 @@
+#!/bin/sh
+':' // ; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+
+const fs = require('fs')
+const path = require('path')
+
+function loadEnv (mode, required = false) {
+  const toKeyValue = (line) => line.trim().split('=')
+  const sanitizeKeyValue = ([key, value]) => [key, (value || '').trim()]
+  const invalidEnv = ([key, value]) => value !== ''
+  const applyEnv = ([key, value]) => { process.env[key] = value }
+
+  const env = [
+    '.env',
+    '.env.local',
+    ...((mode) ? [`.env.${mode}`, `.env.${mode}.local`] : []),
+  ]
+    .map((filename) => {
+      const file = path.join(filename)
+
+      if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return
+
+      const env = fs.readFileSync(file).toString()
+        .split('\n')
+        .map(toKeyValue)
+        .map(sanitizeKeyValue)
+        .filter(invalidEnv)
+
+      if (required) return env.map(applyEnv)
+
+      return env
+    })
+
+  require('module').Module._initPaths()
+
+  return env
+}
+
+if (require.main === module) {
+  // called directly i.e. "node app"
+  loadEnv(process.env.NODE_ENV)
+    .flat()
+    .filter(Boolean)
+    .forEach(([key, value]) => console.log(`${key}=${value}`))
+} else {
+  // required as a module => executed on aws lambda
+  module.exports = loadEnv(process.env.NODE_ENV, true)
+}
