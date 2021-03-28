@@ -1,5 +1,5 @@
 const autoLoad = require('fastify-autoload')
-const database = require('@database')
+const database = require('lib/database')
 const fastify = require('fastify')
 const path = require('path')
 

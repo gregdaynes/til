@@ -1,6 +1,6 @@
 const { test } = require('test')
 
-const build = require('@web')
+const build = require('web/index.js')
 const contentType = require('./content-type')
 
 test('ContentType Response', async (t) => {

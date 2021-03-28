@@ -1,8 +1,8 @@
 const { test } = require('test')
 
-const database = require('@database')
+const database = require('lib/database')
 const faker = require('faker')
-const { create, fetch, verifyPassword } = require('@service/account')
+const { create, fetch, verifyPassword } = require('services/account')
 
 test('account', async (t) => {
   t.plan(3)

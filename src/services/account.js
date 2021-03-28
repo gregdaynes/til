@@ -1,5 +1,5 @@
-const Account = require('@model/account')
-const { hash, verify } = require('@lib/hash')
+const Account = require('models/account')
+const { hash, verify } = require('lib/hash')
 
 module.exports = {
   create,

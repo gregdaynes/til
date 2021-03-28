@@ -27,7 +27,6 @@
     "fastify-static": "^4.0.1",
     "knex": "^0.21.19",
     "lodash": "^4.17.21",
-    "module-alias": "^2.2.2",
     "objection": "^2.2.15",
     "point-of-view": "^4.14.0",
     "pug": "^3.0.2",

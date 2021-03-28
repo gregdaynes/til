@@ -1,5 +1,6 @@
+const { test } = require('test')
+
 const { hash, verify } = require('./hash')
-const { test } = require('tap')
 
 test('creates hash of a payload', async (t) => {
   t.plan(3)
