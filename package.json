@@ -4,11 +4,10 @@
     "./test"
   ],
   "scripts": {
-    "start": "node-dev --use_strict -r ./bin/loadEnv ./bin/server.js | pino-pretty",
+    "start": "node-dev --use_strict ./bin/server.js | pino-pretty",
     "test": "node -r ./bin/loadEnv node_modules/.bin/tap --strict",
     "db": "node -r ./bin/loadEnv node_modules/.bin/knex --knexfile knexfile.js",
-    "lint": "npx eslint src",
-    "release": "standard-version"
+    "lint": "npx eslint src"
   },
   "engines": {
     "node": "15.12.0",
@@ -45,7 +44,6 @@
     "faker": "^5.4.0",
     "node-dev": "^6.6.0",
     "pino-pretty": "^4.7.1",
-    "standard-version": "^9.1.1",
     "yorkie": "^2.0.0"
   },
   "eslintConfig": {
@@ -95,7 +93,8 @@
     ],
     "before": "test/before.js",
     "reporter": "list",
-    "esm": false
+    "esm": false,
+    "jsx": false
   },
   "gitHooks": {
     "pre-push": "npm run lint && npm run test",
